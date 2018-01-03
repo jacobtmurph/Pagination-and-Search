@@ -46,18 +46,24 @@ function searchList() {
     //Check to see if more than ten students were found
     if (searchArray.length == 0) {
         //Select and Remove Student List
-        const page = document.querySelector(".page");
-        page.remove(document.querySelector(".studet-list"));
+        const pageList = document.querySelector(".studet-list");
+        Array.from(pageList.children).forEach(child => {
+            pageList.removeChild(child);
+        }); //End forEach 
 
         //Create and append no results text.
         const sorryText = document.createElement("h4")
         sorryText.textContent = "Sorry! No students were found..."
-        page.appendChild(sorryText);
+        pageList.appendChild(sorryText);
     } else {
         appendPageLinks(searchArray);
-    }
+    };
 }; //End searchList
 
 
 //Append the search bar
 appendSearchBar(header);
+
+document.querySelector("button").addEventListener("click", () => {
+    searchList();
+});
