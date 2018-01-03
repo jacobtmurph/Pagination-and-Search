@@ -63,7 +63,9 @@ function appendPageLinks(studentList) {
 
     //show firstPage and set first button to active
     showPage(studentList, 0);
-    buttonArray[0].setAttribute("class", "active");
+    if (buttonArray.length > 0) {
+        buttonArray[0].setAttribute("class", "active");
+    }; //End if
 
     //Selects each indivdual button
     buttonArray.forEach( button => {
