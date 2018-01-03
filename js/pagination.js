@@ -4,11 +4,14 @@ const students = Array.from(document.querySelector(".student-list").children);
 //Function to show a maximum of 10 students per page
 function showPage(studentList, pageNum) {
     
+    currentlyDisplayed = Array.from(document.querySelector(".student-list").children);
+
+    currentlyDisplayed.forEach(child => {
+        child.style.display = "none";
+    })
+
     //Selects each individual student in the studentList array
     studentList.forEach(student => {
-        //Hides all the students
-        student.style.display = "none";
-        
         //Displays needed students
         if (studentList.indexOf(student) >= pageNum * 10 && studentList.indexOf(student) < pageNum * 10 + 10) {
             student.style.display = "block";
